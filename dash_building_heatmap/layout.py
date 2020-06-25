@@ -64,9 +64,13 @@ def layout(filename = None):
  
     fig['layout'].update(
         autosize=False,
-        yaxis=dict(scaleanchor="x", scaleratio=1)
+        yaxis=dict(scaleanchor="x", scaleratio=1),
+        title='Heat Map East Podium L3',
+        xaxis_title='Wynyard Street',
         )
 
     fig = helpers.add_graphtrace_from_iges(fig)
+    fig.layout.plot_bgcolor = '#fff'
+ 
 
     return dcc.Graph(figure=fig)
