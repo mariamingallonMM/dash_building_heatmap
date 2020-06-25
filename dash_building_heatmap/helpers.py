@@ -51,11 +51,18 @@ def _clean_iges(filepath, from_rhino = True):
     with open(filepath, "rb") as file:
         lines = file.readlines()
         for line in lines:
+            
+            #TODO s = line.split()
+            #if len>2 and s[-2][-1]=='P':
+                #n = len(line):
+                #for c in line
             line = line.replace(b'D0',b'  ')
             line = line.replace(b'D-10',b'    ')
             line = line.replace(b'D-11',b'    ')
             line = line.replace(b'D-12',b'    ')
             line = line.replace(b'D-13',b'    ')
+            line = line.replace(b'D-07',b'    ')
+            line = line.replace(b'D-06',b'    ')
             new_lines.append(line) # iges in expects certain things at certain chars on each line, hence replace
 
     with open(filepath, "wb") as file:
@@ -105,7 +112,8 @@ def add_graphtrace_from_iges(fig : go.Figure(), filename : str = None):
                 x= x_data, 
                 y= y_data,
                 mode='lines',
-                line =dict(color='black',width=1)
+                line =dict(color='black',width=1),
+                showlegend=False
             )
         )
     return fig

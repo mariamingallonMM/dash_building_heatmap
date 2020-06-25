@@ -36,7 +36,7 @@ def layout(filename = None):
             return 0
 
             
-        i = 1000* int(i/gridsize) * gridsize
+        i = int(i/gridsize) * gridsize
         return i
 
     def mirror(l):
@@ -66,7 +66,6 @@ def layout(filename = None):
         autosize=False,
         yaxis=dict(scaleanchor="x", scaleratio=1)
         )
-
 
     fig = helpers.add_graphtrace_from_iges(fig)
 
